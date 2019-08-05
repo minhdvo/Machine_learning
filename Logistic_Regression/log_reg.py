@@ -98,14 +98,14 @@ def clean_sentences(string):
 
 
 def main():
-    df = pd.read_csv("data/amazon_baby_subset.csv")
+    df = pd.read_csv("amazon_baby_subset.csv")
     reviews = df.loc[:, 'review'].values
     for ind, review in enumerate(reviews):
         if type(review) is float:
             reviews[ind] = ""
 
     reviews = clean_sentences("\n".join(reviews))
-    with open("data/important_words.json") as f:
+    with open("important_words.json") as f:
         important_words = json.load(f)
     reviews = reviews.split("\n")
     n = len(reviews)
